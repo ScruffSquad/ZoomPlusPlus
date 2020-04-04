@@ -1,8 +1,18 @@
-﻿@{
+﻿@model IndexModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+  <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    @if (!User.Identity.IsAuthenticated)
+    {
+      <a asp-action="Login" asp-controller="Account" class="btn btn-default">Log In with Zoom</a>
+    }
+    else
+    {
+      <p>First name: @Model.ZoomFirstName</p>
+      <p>Last name: @Model.ZoomLastName</p>
+      <p>Email: @Model.ZoomEmail</p>
+    }
+  </div>
