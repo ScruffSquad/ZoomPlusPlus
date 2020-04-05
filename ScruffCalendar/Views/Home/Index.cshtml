@@ -7,7 +7,7 @@
     <h1 class="display-4">Welcome</h1>
     @if (!User.Identity.IsAuthenticated)
     {
-      <a asp-action="Login" asp-controller="Account" class="btn btn-default">Log In with Zoom</a>
+      <a asp-action="Login" asp-controller="Account" class="btn btn-primary">Log In with Zoom</a>
     }
     else
     {
