@@ -17,12 +17,7 @@ namespace ScruffCalendar.Models
 
         public void OnGet()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                ZoomFirstName = User.FindFirst(c => c.Type == ClaimTypes.GivenName)?.Value;
-                ZoomLastName = User.FindFirst(c => c.Type == ClaimTypes.Surname)?.Value;
-                ZoomEmail = User.FindFirst(c => c.Type == ClaimTypes.Email)?.Value;
-            }
+            
         }
     }
 }

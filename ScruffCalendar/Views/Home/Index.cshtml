@@ -1,4 +1,4 @@
-﻿@model IndexModel
+﻿@model ScruffCalendar.Models.IndexModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -11,8 +11,9 @@
     }
     else
     {
-      <p>First name: @Model.ZoomFirstName</p>
-      <p>Last name: @Model.ZoomLastName</p>
-      <p>Email: @Model.ZoomEmail</p>
+      <a asp-action="Logout" asp-controller="Account" class="btn btn-primary">Logout</a>
+      <p>First name: @Html.DisplayFor(model => model.ZoomFirstName)</p>
+      <p>Last name: @Html.DisplayFor(model => model.ZoomLastName)</p>
+      <p>Email: @Html.DisplayFor(model => model.ZoomEmail)</p>
     }
   </div>

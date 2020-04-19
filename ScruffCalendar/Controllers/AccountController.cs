@@ -14,5 +14,11 @@ namespace ScruffCalendar.Controllers
         {
             return Challenge(new AuthenticationProperties() { RedirectUri = returnUrl });
         }
+
+        public async Task<IActionResult> Logout(string returnUrl = "/")
+        {
+            await HttpContext.SignOutAsync();
+            return Redirect(returnUrl);
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -20,7 +21,17 @@ namespace ScruffCalendar.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (!User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            var model = new IndexModel()
+            {
+                ZoomFirstName = User.FindFirst(c => c.Type == ClaimTypes.GivenName)?.Value,
+                ZoomLastName = User.FindFirst(c => c.Type == ClaimTypes.Surname)?.Value,
+                ZoomEmail = User.FindFirst(c => c.Type == ClaimTypes.Email)?.Value,
+            };
+            return View(model);
         }
 
         public IActionResult Privacy()

@@ -67,7 +67,8 @@ namespace ScruffCalendar
                         var response = await context.Backchannel.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, context.HttpContext.RequestAborted);
                         response.EnsureSuccessStatusCode();
 
-                        var user = JsonDocument.Parse(await response.Content.ReadAsStringAsync()).RootElement;
+                        string body = await response.Content.ReadAsStringAsync();
+                        var user = JsonDocument.Parse(body).RootElement;
 
                         context.RunClaimActions(user);
                     }
