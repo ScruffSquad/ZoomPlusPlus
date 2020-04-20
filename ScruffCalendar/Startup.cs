@@ -51,10 +51,13 @@ namespace ScruffCalendar
                 options.TokenEndpoint = "https://zoom.us/oauth/token";
                 options.UserInformationEndpoint = "https://api.zoom.us/v2/users/me";
 
-                options.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "id");
+                options.ClaimActions.MapJsonKey("urn:zoom:userId", "id");
+                options.ClaimActions.MapJsonKey("urn:zoom:pmi", "pmi");
                 options.ClaimActions.MapJsonKey(ClaimTypes.GivenName, "first_name");
                 options.ClaimActions.MapJsonKey(ClaimTypes.Surname, "last_name");
                 options.ClaimActions.MapJsonKey(ClaimTypes.Email, "email");
+
+                options.SaveTokens = true;
 
                 options.Events = new OAuthEvents
                 {

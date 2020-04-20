@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ScruffCalendar.Models;
+using ScruffCalendar.Zoom;
 
 namespace ScruffCalendar.Controllers
 {
@@ -19,18 +20,26 @@ namespace ScruffCalendar.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             if (!User.Identity.IsAuthenticated)
             {
                 return View();
             }
+
+            var zoom = new ZoomClient(HttpContext);
+
+            string userId = User.FindFirst(c => c.Type == "urn:zoom:userId")?.Value;
+
             var model = new IndexModel()
             {
+                Meetings = (await zoom.ListMeetingsAsync()).Meetings,
+                ZoomUserId = userId,
                 ZoomFirstName = User.FindFirst(c => c.Type == ClaimTypes.GivenName)?.Value,
                 ZoomLastName = User.FindFirst(c => c.Type == ClaimTypes.Surname)?.Value,
                 ZoomEmail = User.FindFirst(c => c.Type == ClaimTypes.Email)?.Value,
             };
+
             return View(model);
         }
 
