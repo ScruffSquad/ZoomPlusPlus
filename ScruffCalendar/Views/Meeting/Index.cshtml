@@ -4,13 +4,18 @@
 
   <form asp-controller="Meeting" asp-action="Detail" method="post">
     <input type="hidden" name="meetingId" value="@ViewData["pmi"]" />
-    <input type="submit" value="View Personal Meeting" />
+    <input type="submit" value="View Personal Meeting Room" />
   </form>
 
-<h1>Search</h1>
-
-
+<h3>Find by Meeting ID</h3>
 <form asp-controller="Meeting" asp-action="Detail" method="post">
   <input type="text" id="meetingId" name="meetingId" placeholder="555-555-5555" />
-  <input type="submit" />
+  <input type="submit" value="Find" />
+</form>
+
+<h3>Search Email</h3>
+<form asp-controller="Meeting" asp-action="List" method="post">
+  <input type="text" id="email" name="popUser" placeholder="name@example.com"/>
+  <input type="password" id="password" name="popPass" placeholder="password" />
+  <input type="submit" value="Search"/>
 </form>
