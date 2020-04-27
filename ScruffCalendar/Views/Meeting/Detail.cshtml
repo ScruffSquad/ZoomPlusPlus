@@ -1,0 +1,23 @@
+﻿@model ScruffCalendar.Models.Meeting
+@{
+  ViewData["Title"] = "Home Page";
+}
+
+  <table>
+    <tr>
+      <td>ID: </td>
+      <td>@Html.DisplayFor(model => model.Id)</td>
+    </tr>
+    <tr>
+      <td>Created At: </td>
+      <td>@Html.DisplayFor(model => model.CreatedAt)</td>
+    </tr>
+    <tr>
+      <td>Topic: </td>
+      <td>@Html.DisplayFor(model => model.Topic)</td>
+    </tr>
+    <tr>
+      <td>Join URL: </td>
+      <td><a href="@Html.DisplayFor(model => model.JoinUrl)">@Html.DisplayFor(model => model.JoinUrl)</a></td>
+    </tr>
+  </table>

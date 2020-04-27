@@ -1,8 +1,19 @@
-﻿@{
+﻿@model ScruffCalendar.Models.IndexModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+  <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    @if (!User.Identity.IsAuthenticated)
+    {
+      <a asp-action="Login" asp-controller="Account" class="btn btn-primary">Log In with Zoom</a>
+    }
+    else
+    {
+      <a asp-action="Logout" asp-controller="Account" class="btn btn-primary">Logout</a>
+      <p>First name: @Html.DisplayFor(model => model.ZoomFirstName)</p>
+      <p>Last name: @Html.DisplayFor(model => model.ZoomLastName)</p>
+      <p>Email: @Html.DisplayFor(model => model.ZoomEmail)</p>
+    }
+  </div>
