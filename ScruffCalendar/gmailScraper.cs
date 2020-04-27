@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using GemBox.Email;
 using GemBox.Email.Pop;
@@ -10,11 +11,21 @@ namespace ScruffCalendar
 {
     public class gmailScraper
     {
-        gmailScraper(string name, string pass)
+        string name { get; }
+        string pass { get; }
+        StringBuilder emails = new StringBuilder(); 
+
+        gmailScraper(string _name, string _pass)
         {
             // If using Professional version, put your serial key below.
             ComponentInfo.SetLicense("FREE-LIMITED-KEY");
+            name = _name;
+            pass = _pass;
 
+
+        }
+        void connect()
+        {
             using (PopClient pop = new PopClient("pop.gmail.com"))
             {
                 // Connect and login.
@@ -32,19 +43,20 @@ namespace ScruffCalendar
                 MailMessage message = pop.GetMessage(1);
 
                 // Display message sender and subject.
-                Console.WriteLine();
-                Console.WriteLine($"From: {message.From}");
-                Console.WriteLine($"Subject: {message.Subject}");
+                //Console.WriteLine();
+                //Console.WriteLine($"From: {message.From}");
+                //Console.WriteLine($"Subject: {message.Subject}");
+                emails.Append($"From: {message.From}");
+                emails.Append($"Subject: {message.Subject}");
 
                 // Display message body.
-                Console.WriteLine("Body:");
+                // Console.WriteLine("Body:");
                 string body = string.IsNullOrEmpty(message.BodyHtml) ?
                     message.BodyText :
                     message.BodyHtml;
-                Console.WriteLine(body);
+                //Console.WriteLine(body);
+                emails.Append(body);
             }
-
         }
-
     }
 }
