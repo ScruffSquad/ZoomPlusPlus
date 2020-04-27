@@ -34,5 +34,15 @@ namespace ScruffCalendar.Controllers
 
             return View(meeting);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> List(string popUser, string popPass)
+        {
+            List<Meeting> meetings = new List<Meeting>();
+
+            var zoom = new ZoomClient(HttpContext);
+
+            return View(meetings);
+        }
     }
 }
