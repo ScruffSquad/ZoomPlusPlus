@@ -58,5 +58,10 @@ namespace ScruffCalendar
                 emails.Append(body);
             }
         }
+        string getText()
+        {
+            return emails.ToString();
+        }
     }
 }
+ 
