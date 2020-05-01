@@ -28,6 +28,8 @@ namespace ScruffCalendar
         {
             using (PopClient pop = new PopClient("pop.gmail.com"))
             {
+                int count = pop.GetCount();
+                int pops = 1;
                 // Connect and login.
                 pop.Connect();
                 Console.WriteLine("Connected.");
@@ -39,24 +41,28 @@ namespace ScruffCalendar
                 if (pop.GetCount() == 0)
                     return;
 
-                // Download message with sequence number 1 (the first message).
-                MailMessage message = pop.GetMessage(1);
+                while(pops <= count)
+                    {
+                    // Download message with sequence number 1 (the first message).
+                    MailMessage message = pop.GetMessage(1);
 
-                // Display message sender and subject.
-                //Console.WriteLine();
-                //Console.WriteLine($"From: {message.From}");
-                //Console.WriteLine($"Subject: {message.Subject}");
-                emails.Append($"From: {message.From}");
-                emails.Append($"Subject: {message.Subject}");
+                    // Display message sender and subject.
+                    //Console.WriteLine();
+                    //Console.WriteLine($"From: {message.From}");
+                    //Console.WriteLine($"Subject: {message.Subject}");
+                     emails.Append($"From: {message.From}");
+                     emails.Append($"Subject: {message.Subject}");
 
-                // Display message body.
-                // Console.WriteLine("Body:");
-                string body = string.IsNullOrEmpty(message.BodyHtml) ?
-                    message.BodyText :
-                    message.BodyHtml;
-                //Console.WriteLine(body);
-                emails.Append(body);
-            }
+                    // Display message body.
+                    // Console.WriteLine("Body:");
+                     string body = string.IsNullOrEmpty(message.BodyHtml) ?
+                         message.BodyText :
+                          message.BodyHtml;
+                        //Console.WriteLine(body);
+                        emails.Append(body);
+                       pops++;                
+                    }
+                }
         }
         string getText()
         {
