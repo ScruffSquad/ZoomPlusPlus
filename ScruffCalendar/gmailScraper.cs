@@ -44,7 +44,7 @@ namespace ScruffCalendar
                 while(pops <= count)
                     {
                     // Download message with sequence number 1 (the first message).
-                    MailMessage message = pop.GetMessage(1);
+                    MailMessage message = pop.GetMessage(pops);
 
                     // Display message sender and subject.
                     //Console.WriteLine();
