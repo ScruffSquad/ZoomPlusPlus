@@ -19,7 +19,7 @@ namespace ScruffCalendar
         private readonly Regex ZoomId = new Regex(@"(\d{3}\s\d{3,4}\s\d{3,4})", RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private readonly Regex ZoomJoinUrl = new Regex(@"https://SonomaState.zoom.us/j/.+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
         List<string> ID = new List<String>();
-        List<Meeting> meetings = new List<Meeting>;
+        List<Meeting> meetings = new List<Meeting>();
         gmailScraper(string _name, string _pass)
         {
             // If using Professional version, put your serial key below.
