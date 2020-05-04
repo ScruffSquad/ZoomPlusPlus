@@ -16,15 +16,27 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Meeting" asp-action="Index">Meetings</a>
-                        </li>
-                    </ul>
+                <div class="navbar-collapse collapse">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                      <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-dark" asp-area="" asp-controller="Meeting" asp-action="Index">Meetings</a>
+                    </li>
+                  </ul>
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                      @if (!User.Identity.IsAuthenticated)
+                      {
+                        <a asp-action="Login" asp-controller="Account" class="nav-link text-dark">Log In with Zoom</a>
+                      }
+                      else
+                      {
+                        <a asp-action="Logout" asp-controller="Account" class="nav-link text-dark">Logout</a>
+                      }
+                    </li>
+                  </ul>
                 </div>
             </div>
         </nav>

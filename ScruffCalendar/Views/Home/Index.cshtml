@@ -4,16 +4,25 @@
 }
 
   <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
     @if (!User.Identity.IsAuthenticated)
     {
+      <h1 class="display-4">Welcome</h1>
       <a asp-action="Login" asp-controller="Account" class="btn btn-primary">Log In with Zoom</a>
     }
     else
     {
-      <a asp-action="Logout" asp-controller="Account" class="btn btn-primary">Logout</a>
-      <p>First name: @Html.DisplayFor(model => model.ZoomFirstName)</p>
-      <p>Last name: @Html.DisplayFor(model => model.ZoomLastName)</p>
-      <p>Email: @Html.DisplayFor(model => model.ZoomEmail)</p>
+      <h1 class="display-4">Welcome, @Html.DisplayFor(model => model.ZoomFirstName)!</h1>
+      
+      <h3 class="text-left">Your profile</h3>
+      <table class="table table-borderless col-6">
+        <tr>
+          <td scope="row">Name</td>
+          <td class="text-left">@Html.DisplayFor(model => model.ZoomFirstName) @Html.DisplayFor(model => model.ZoomLastName)</td>
+        </tr>
+        <tr>
+          <td scope="row">Email</td>
+          <td class="text-left">@Html.DisplayFor(model => model.ZoomEmail)</td>
+        </tr>
+      </table>
     }
   </div>

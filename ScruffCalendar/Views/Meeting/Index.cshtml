@@ -10,7 +10,10 @@
 <h1>Search</h1>
 
 
-<form asp-controller="Meeting" asp-action="Detail" method="post">
-  <input type="text" id="meetingId" name="meetingId" placeholder="555-555-5555" />
-  <input type="submit" />
+<form asp-controller="Meeting" asp-action="Detail" method="post" class="col-4">
+  <div class="form-group">
+    <label for="meetingId">Enter Meeting ID</label>
+    <input type="text"  class="form-control"  id="meetingId" name="meetingId" placeholder="555-555-5555" />
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Find Meeting</button>
 </form>
