@@ -4,8 +4,11 @@
 
   <form asp-controller="Meeting" asp-action="Detail" method="post">
     <input type="hidden" name="meetingId" value="@ViewData["pmi"]" />
-    <input type="submit" value="View Personal Meeting Room" />
+    <button type="submit" class="btn btn-primary">View Personal Meeting Room</button>
   </form>
+
+  <br />
+<br />
 
 <h3>Find by Meeting ID</h3>
 <form asp-controller="Meeting" asp-action="Detail" method="post" class="col-4">
@@ -16,9 +19,18 @@
   <button type="submit" class="btn btn-primary mb-2">Find Meeting</button>
 </form>
 
+<br />
+<br />
+
 <h3>Search Email</h3>
-<form asp-controller="Meeting" asp-action="List" method="post">
-  <input type="text" id="email" name="popUser" placeholder="name@example.com"/>
-  <input type="password" id="password" name="popPass" placeholder="password" />
-  <input type="submit" value="Search"/>
+<form asp-controller="Meeting" asp-action="List" method="post" class="col-4">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" id="email" name="popUser" placeholder="name@example.com" />
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="popPass" placeholder="password" />
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Find Meetings</button>
 </form>

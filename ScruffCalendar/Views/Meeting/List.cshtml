@@ -9,37 +9,31 @@
 
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Topic)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JoinUrl)
-            </th>
-        </tr>
+      <tr>
+        <th>
+          Meeting ID
+        </th>
+        <th>
+          Start Time
+        </th>
+        <th>
+          Join URL
+        </th>
+      </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Topic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JoinUrl)
-            </td>
-        </tr>
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+          <a href="@Html.DisplayFor(modelItem => item.JoinUrl)">@Html.DisplayFor(modelItem => item.JoinUrl)</a>
+        </td>
+      </tr>
 }
     </tbody>
 </table>

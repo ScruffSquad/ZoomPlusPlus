@@ -38,9 +38,11 @@ namespace ScruffCalendar.Controllers
         [HttpPost]
         public async Task<ActionResult> List(string popUser, string popPass)
         {
-            List<Meeting> meetings = new List<Meeting>();
+            var client = new gmailScraper(popUser, popPass);
 
-            var zoom = new ZoomClient(HttpContext);
+            client.connect();
+
+            var meetings = client.GetMeetings();
 
             return View(meetings);
         }
