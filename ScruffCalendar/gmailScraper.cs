@@ -7,8 +7,6 @@ using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using GemBox.Email;
-using GemBox.Email.Pop;
 using MailKit.Net.Imap;
 using MailKit.Search;
 using MimeKit;
